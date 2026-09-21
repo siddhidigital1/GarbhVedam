@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garbhvedam - Online Garbhsanskar & Wellness Classes</title>
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Offline/Client-side QR Code Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --primary: #be185d;       /* Warm Lotus / Garbhsanskar Rose */
+      --secondary: #9d174d;     /* Deep Berry */
+      --accent: #d97706;        /* Spiritual Gold */
+      --navy: #1e1b4b;          /* Royal Indigo */
+      --surface: #ffffff;
+      --bg: #fff1f2;            /* Soft Rose Milk background */
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #ffe4e6;
+      --whatsapp: #25d366;
+      --website: #ec4899;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 10px 6px 80px;
+    }
+
+    .card-shell {
+      width: 100%;
+      max-width: 440px;
+      background: var(--surface);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(190, 24, 93, 0.08);
+      overflow: hidden;
+    }
+
+    /* Hero / Profile Section */
+    .hero {
+      background: linear-gradient(135deg, #4c0519 0%, #831843 50%, #be185d 100%);
+      color: #fff;
+      text-align: center;
+      padding: 28px 20px 24px;
+      position: relative;
+    }
+    .views-counter {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 11px;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 3px 10px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+    .avatar-wrap {
+      width: 116px;
+      height: 116px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: #fdf2f8;
+      border: 4px solid #ffffff;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 50%;
+    }
+    .hero h1 {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+    }
+    .hero .doc-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fef08a;
+      margin-top: 6px;
+    }
+    .hero .credentials {
+      font-size: 12px;
+      font-weight: 500;
+      opacity: 0.95;
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+    .hero .sub-role {
+      font-size: 11.5px;
+      opacity: 0.9;
+      margin-top: 5px;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 4px 12px;
+      border-radius: 20px;
+      display: inline-block;
+    }
+
+    /* Quick Action Row */
+    .quick-bar {
+      display: flex;
+      justify-content: space-around;
+      padding: 14px 20px;
+      background: #ffffff;
+      border-bottom: 8px solid var(--line);
+    }
+    .quick-btn {
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .quick-btn .icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+    .quick-btn:hover .icon-circle {
+      transform: scale(1.05);
+    }
+    .btn-call { background: var(--primary); }
+    .btn-wa   { background: var(--whatsapp); }
+    .btn-zoom { background: #0284c7; }
+
+    /* Section Styling */
+    .section {
+      padding: 20px 18px;
+      border-bottom: 8px solid var(--line);
+    }
+    .section-header {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--line);
+    }
+    .section-header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 48px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    /* Contact Details */
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .info-row i {
+      color: var(--primary);
+      width: 18px;
+      text-align: center;
+      margin-top: 2px;
+      font-size: 15px;
+    }
+
+    /* Action Buttons Row */
+    .vcard-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .vcard-action {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #fff;
+      background: var(--primary);
+      cursor: pointer;
+      border: none;
+    }
+    .vcard-action.btn-wa-share {
+      background: var(--whatsapp);
+    }
+
+    /* Direct Links Tile */
+    .link-tile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #fbcfe8;
+      border-radius: 10px;
+      padding: 11px 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.2s;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    .link-tile:hover {
+      background: #fdf2f8;
+    }
+    .link-tile-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .link-tile-left i {
+      font-size: 22px;
+    }
+    .link-tile-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .link-tile-desc {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Specialties Pill Grid */
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .pill {
+      background: #fff1f2;
+      color: var(--primary);
+      border: 1px solid #fecdd3;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 500;
+    }
+
+    /* Program Cards */
+    .program-card {
+      border: 1px solid #ffe4e6;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .program-header-box {
+      padding: 12px 14px;
+      background: #fff1f2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ffe4e6;
+    }
+    .program-header-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .program-body {
+      padding: 13px 14px;
+    }
+    .program-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .enquiry-btn {
+      display: inline-block;
+      background: var(--whatsapp);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 20px;
+      text-decoration: none;
+    }
+
+    /* Photo Gallery Grid (5 Photos Layout) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .gallery-grid .gallery-item:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16 / 9;
+    }
+    .gallery-item {
+      aspect-ratio: 1 / 1;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #fecdd3;
+      background: #fdf2f8;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Video Showcase Grid (2 Videos) */
+    .video-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .video-card {
+      border: 1px solid #ffe4e6;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .video-card video {
+      width: 100%;
+      display: block;
+      background: #000;
+      border-bottom: 1px solid #ffe4e6;
+    }
+    .video-card-body {
+      padding: 10px 12px;
+    }
+    .video-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .video-card-desc {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.92);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .lightbox-content {
+      max-width: 92%;
+      max-height: 85vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: #ffffff;
+      font-size: 34px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Forms Common Styling */
+    .inquiry-form input,
+    .inquiry-form select,
+    .inquiry-form textarea {
+      width: 100%;
+      padding: 11px 13px;
+      font-size: 13px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      margin-bottom: 11px;
+      outline: none;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+    .inquiry-form input:focus,
+    .inquiry-form select:focus,
+    .inquiry-form textarea:focus {
+      border-color: var(--primary);
+    }
+    .inquiry-form button {
+      width: 100%;
+      background: var(--whatsapp);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .inquiry-form button:hover {
+      background: #1ebc59;
+    }
+
+    /* Feedback Component */
+    .feedback-container {
+      background: #fff5f7;
+      border-radius: 12px;
+      padding: 18px 16px;
+      border: 1px solid #fecdd3;
+    }
+    .feedback-subtitle {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 14px;
+    }
+    .rating-wrapper {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 9px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      user-select: none;
+    }
+    .stars-group {
+      display: flex;
+      gap: 5px;
+    }
+    .star-item {
+      font-size: 23px;
+      color: #cbd5e1;
+      cursor: pointer;
+      transition: color 0.15s ease, transform 0.1s;
+    }
+    .star-item.active,
+    .star-item.hovered {
+      color: #f59e0b;
+    }
+    .rating-badge {
+      background: #1e293b;
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+    .btn-feedback-submit {
+      width: 100%;
+      background: var(--primary) !important;
+      color: #ffffff !important;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-feedback-submit:hover {
+      background: var(--secondary) !important;
+    }
+
+    /* Share Section with Local QR Canvas */
+    .share-box {
+      border: 1px dashed #fb7185;
+      padding: 16px;
+      border-radius: 12px;
+      text-align: center;
+      background: #fff1f2;
+    }
+    #qrcode-container {
+      width: 146px;
+      height: 146px;
+      margin: 12px auto;
+      padding: 7px;
+      background: #ffffff;
+      border: 1px solid #fecdd3;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    #qrcode-container canvas,
+    #qrcode-container img {
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+    }
+    .share-direct-wrap {
+      margin-top: 16px;
+      text-align: left;
+    }
+    .share-direct-wrap label {
+      font-size: 11.5px;
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .share-input-group {
+      display: flex;
+      gap: 6px;
+    }
+    .share-input-group input {
+      flex: 1;
+      padding: 8px 10px;
+      font-size: 12.5px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      outline: none;
+    }
+    .share-input-group button {
+      background: var(--whatsapp);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Bottom Floating Navigation */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0 10px;
+      box-shadow: 0 -3px 12px rgba(0,0,0,0.08);
+      z-index: 999;
+      border-top: 1px solid #ffe4e6;
+    }
+    .bottom-tab {
+      text-decoration: none;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      font-size: 9.5px;
+      font-weight: 600;
+    }
+    .bottom-tab i {
+      font-size: 16px;
+    }
+    .bottom-tab:hover, .bottom-tab.active {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-shell">
+
+    <!-- HERO / PROFILE SECTION -->
+    <div class="hero" id="home">
+      <div class="views-counter"><i class="fa-solid fa-eye"></i> Views: <b>1,850</b></div>
+      <div class="avatar-wrap">
+        <img src="doctor.jpg" alt="Dr. Gauri Ramesh Hukkeri" onerror="handleImgError(this, ['doctor.png', 'doctor.jpeg', 'logo.png'])">
+      </div>
+      <h1>Garbhvedam Online Classes</h1>
+      <div class="doc-name">Dr. Gauri Ramesh Hukkeri</div>
+      <div class="credentials">M.D. Balrog (बालरोगतज्ञ पदवी धारक)</div>
+      <div class="sub-role">🌸 शास्त्रोक्त गर्भसंस्कार तज्ञ व योग उपासक 🌸</div>
+    </div>
+
+    <!-- QUICK CALL/WHATSAPP/ONLINE CONSULT BAR -->
+    <div class="quick-bar">
+      <a href="tel:+918600673556" class="quick-btn">
+        <div class="icon-circle btn-call"><i class="fa-solid fa-phone"></i></div>
+        Call
+      </a>
+      <a href="https://wa.me/918600673556?text=Namaste%20Dr.%20Gauri,%20I%20would%20like%20to%20inquire%20about%20your%20Online%20Garbhsanskar%20and%20Wellness%20classes." target="_blank" class="quick-btn">
+        <div class="icon-circle btn-wa"><i class="fa-brands fa-whatsapp"></i></div>
+        WhatsApp
+      </a>
+      <a href="https://wa.me/918600673556?text=Namaste,%20I%20want%20to%20book%20an%20Online%20Garbhsanskar%20consultation%20slot." target="_blank" class="quick-btn">
+        <div class="icon-circle btn-zoom"><i class="fa-solid fa-video"></i></div>
+        Join Class
+      </a>
+    </div>
+
+    <!-- CONTACT DETAILS & ACTIONS -->
+    <div class="section">
+      <div class="info-list">
+        <a href="tel:+918600673556" class="info-row">
+          <i class="fa-solid fa-phone"></i>
+          <span>Direct Helpline: +91 8600673556</span>
+        </a>
+        <a href="https://wa.me/918600673556" target="_blank" class="info-row">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Official WhatsApp: +91 8600673556</span>
+        </a>
+        <div class="info-row">
+          <i class="fa-solid fa-laptop-medical"></i>
+          <span>Mode: Interactive Live Online Zoom & Google Meet Batches</span>
+        </div>
+        <div class="info-row">
+          <i class="fa-solid fa-language"></i>
+          <span>Languages: मराठी (Marathi), हिंदी (Hindi), English</span>
+        </div>
+      </div>
+
+      <div class="vcard-row">
+        <a href="javascript:void(0)" onclick="downloadVCard()" class="vcard-action">
+          <i class="fa-solid fa-address-book"></i> Add to Contacts
+        </a>
+        <a href="javascript:void(0)" onclick="shareOnWhatsApp()" class="vcard-action btn-wa-share">
+          <i class="fa-brands fa-whatsapp"></i> Share Card
+        </a>
+      </div>
+    </div>
+
+    <!-- DIRECT LINKS SECTION -->
+    <div class="section" id="links">
+      <div class="section-header">Direct Actions & Booking</div>
+      
+      <a href="https://wa.me/918600673556?text=Namaste%20Dr.%20Gauri,%20I%20would%20like%20to%20book%20a%20Free%20Introductory%20Counseling%20Call." target="_blank" class="link-tile">
+        <div class="link-tile-left">
+          <i class="fa-brands fa-whatsapp" style="color: var(--whatsapp);"></i>
+          <div>
+            <div class="link-tile-title">Book Free Introductory Call</div>
+            <div class="link-tile-desc">Discuss batch timings & course modules</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="color:var(--primary); font-size: 13px;"></i>
+      </a>
+
+      <a href="https://wa.me/918600673556?text=Namaste,%20please%20send%20the%20complete%20Garbhvedam%20Course%20PDF%20Syllabus%20and%20Schedule." target="_blank" class="link-tile">
+        <div class="link-tile-left">
+          <i class="fa-solid fa-file-pdf" style="color: var(--primary);"></i>
+          <div>
+            <div class="link-tile-title">Get Program Brochure on WhatsApp</div>
+            <div class="link-tile-desc">Course syllabus, diet guides & details</div>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right" style="color:var(--primary); font-size: 13px;"></i>
+      </a>
+    </div>
+
+    <!-- ABOUT US SECTION -->
+    <div class="section" id="about">
+      <div class="section-header">About Dr. Gauri & Garbhvedam</div>
+      <p style="font-size: 13px; color: #475569; line-height: 1.65;">
+        Welcome to <strong>Garbhvedam Online Garbhsanskar Classes</strong>, founded and personally guided by <strong>Dr. Gauri Ramesh Hukkeri</strong> [M.D. Balrog (बालरोगतज्ञ), शास्त्रोक्त गर्भसंस्कार तज्ञ, व योग उपासक]. 
+      </p>
+      <p style="font-size: 13px; color: #475569; line-height: 1.65; margin-top: 8px;">
+        Garbhvedam bridges ancient Ayurvedic Vedic wisdom with modern pediatric and obstetric sciences. Through scientific Garbhsanskar, targeted yoga, trimester-wise nutrition, and pre-conception counseling, we guide aspiring and expectant mothers toward delivering happy, healthy, and spiritually grounded babies.
+      </p>
+
+      <div class="section-header" style="margin-top: 18px; font-size: 13.5px; border-bottom: none; padding-bottom: 0;">Core Specialities</div>
+      <div class="pill-grid">
+        <div class="pill">🕉️ शास्त्रोक्त गर्भसंस्कार</div>
+        <div class="pill">🧘 Prenatal & Postnatal Yoga</div>
+        <div class="pill">👶 Pediatric Doctor Led</div>
+        <div class="pill">🥗 Trimester Nutrition Plans</div>
+        <div class="pill">💑 Pre-Pregnancy Couple Guidance</div>
+        <div class="pill">⚖️ Healthy Maternal Weight Control</div>
+      </div>
+    </div>
+
+    <!-- PROGRAMS & CURRICULUM SECTION (8 Modules) -->
+    <div class="section" id="programs">
+      <div class="section-header">Our Programs & Curriculum</div>
+
+      <!-- 1. Suryanamaskar Program -->
+      <div class="program-card">
+        <div class="program-header-box">
+          <div class="program-header-title"><i class="fa-solid fa-sun" style="color: var(--accent);"></i> 1. Suryanamaskar Program</div>
+          <span style="font-size: 10.5px; font-weight: 700; color: var(--primary);">DAILY ENERGY</span>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Step-by-step breathing synchronized Sun Salutations adapted safely for maternal flexibility, core stamina, and pelvic joint readiness.</div>
+          <a href="https://wa.me/918600673556?text=Hello%20Dr.%20Gauri,%20I%20am%20interested%20in%20the%20Suryanamaskar%20Program." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 2. Yoga & Meditation Program -->
+      <div class="program-card">
+        <div class="program-header-box">
+          <div class="program-header-title"><i class="fa-solid fa-spa" style="color: #059669;"></i> 2. Yoga & Meditation Program</div>
+          <span style="font-size: 10.5px; font-weight: 700; color: var(--primary);">MIND & BODY</span>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Guided Pranayama, Yoga Nidra, and meditative visualization techniques to calm maternal hormones, reduce cortisol, and connect with the baby.</div>
+          <a href="https://wa.me/918600673556?text=Hello%20Dr.%20Gauri,%20I%20am%20interested%20in%20the%20Yoga%20and%20Meditation%20Program." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 3. Weight Loss Program -->
+      <div class="program-card">
+        <div class="program-header-box">
+          <div class="program-header-title"><i class="fa-solid fa-person-walking" style="color: #d97706;"></i> 3. Weight Loss Program</div>
+          <span style="font-size: 10.5px; font-weight: 700; color: var(--primary);">METABOLIC CARE</span>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Holistic lifestyle and natural metabolic reset program tailored for women dealing with stubborn weight, thyroid imbalance, or hormonal delays.</div>
+          <a href="https://wa.me/918600673556?text=Hello%20Dr.%20Gauri,%20I%20am%20interested%20in%20the%20Weight%20Loss%20Program." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 4. Garbhsanskar Program -->
+      <div class="program-card">
+        <div class="program-header-box">
+          <div class="program-header-title"><i class="fa-solid fa-hands-holding-child" style="color: #be185d;"></i> 4. Garbhsanskar Program</div>
+          <span style="font-size: 10.5px; font-weight: 700; color: var(--primary);">FLAGSHIP</span>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Authentic Shastrokta Garbhsanskar including fetal communication (Garbhsamvad), Vedic mantra chanting, creative stimulation, and intellectual bonding.</div>
+          <a href="https://wa.me/918600673556?text=Hello%20Dr.%20Gauri,%20I%20am%20interested%20in%20the%20Full%20Garbhsanskar%20Program." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 5. Weight Loss for Pregnancy Program -->
+      <div class="program-card">
+        <div class="program-header-box">
+          <div class="program-header-title"><i class="fa-solid fa-heart-pulse" style="color: #dc2626;"></i> 5. Weight Loss for Pregnancy</div>
+          <span style="font-size: 10.5px; font-weight: 700; color: var(--primary);">PRE-CONCEPTION</span>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Targeted weight and BMI optimization program for women preparing to conceive, helping prevent gestational diabetes, hypertension, and PCOD issues.</div>
+          <a href="https://wa.me/918600673556?text=Hello%20Dr.%20Gauri,%20I%20need%20details%20about%20Weight%20Loss%20for%20Pregnancy." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 6. Diet Plan Program -->
+      <div class="program-card">
+        <div class="program-header-box">
+          <div class="program-header-title"><i class="fa-solid fa-bowl-food" style="color: #16a34a;"></i> 6. Diet Plan Program</div>
+          <span style="font-size: 10.5px; font-weight: 700; color: var(--primary);">BALANCED DIET</span>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Personalized satvik nutrition blueprints tailored to each pregnancy trimester, postpartum lactation phase, and individual digestive capacity (Agni).</div>
+          <a href="https://wa.me/918600673556?text=Hello%20Dr.%20Gauri,%20I%20want%20to%20know%20about%20the%20Custom%20Diet%20Plan%20Program." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 7. Post Delivery Weight Loss Program -->
+      <div class="program-card">
+        <div class="program-header-box">
+          <div class="program-header-title"><i class="fa-solid fa-person-breastfeeding" style="color: #9333ea;"></i> 7. Post Delivery Weight Loss</div>
+          <span style="font-size: 10.5px; font-weight: 700; color: var(--primary);">POSTNATAL CARE</span>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Safe postpartum rehabilitation targeting belly flattening, pelvic floor recovery, diastasis recti strengthening, and healthy milk production.</div>
+          <a href="https://wa.me/918600673556?text=Hello%20Dr.%20Gauri,%20I%20am%20interested%20in%20Post%20Delivery%20Weight%20Loss." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- 8. Couple Construction to Start Pregnancy Journey -->
+      <div class="program-card">
+        <div class="program-header-box">
+          <div class="program-header-title"><i class="fa-solid fa-children" style="color: #0284c7;"></i> 8. Couple Pre-Pregnancy Counseling</div>
+          <span style="font-size: 10.5px; font-weight: 700; color: var(--primary);">BEEJ SHUDDHI</span>
+        </div>
+        <div class="program-body">
+          <div class="program-desc">Comprehensive couple alignment sessions focusing on mental readiness, reproductive detoxification (Beej Shuddhi), partner bonding, and conscious conception.</div>
+          <a href="https://wa.me/918600673556?text=Hello%20Dr.%20Gauri,%20we%20want%20to%20join%20the%20Couple%20Pre-Pregnancy%20Counseling." target="_blank" class="enquiry-btn">Inquire on WhatsApp</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PHOTOS GALLERY SECTION (5 Photos) -->
+    <div class="section" id="gallery">
+      <div class="section-header">Class & Activity Gallery (5 Photos)</div>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('photo1.jpg')">
+          <img src="photo1.jpg" alt="Online Garbhsanskar Live Session" loading="lazy" onerror="handleImgError(this, ['photo1.jpeg', 'photo1.png', 'photo1.JPG'])">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('photo2.jpg')">
+          <img src="photo2.jpg" alt="Prenatal Yoga & Asanas" loading="lazy" onerror="handleImgError(this, ['photo2.jpeg', 'photo2.png', 'photo2.JPG'])">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('photo3.jpg')">
+          <img src="photo3.jpg" alt="Meditation & Garbhsamvad" loading="lazy" onerror="handleImgError(this, ['photo3.jpeg', 'photo3.png', 'photo3.JPG'])">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('photo4.jpg')">
+          <img src="photo4.jpg" alt="Diet Plan & Ayurvedic Nutrition" loading="lazy" onerror="handleImgError(this, ['photo4.jpeg', 'photo4.png', 'photo4.JPG'])">
+        </div>
+        <div class="gallery-item" onclick="openLightbox('photo5.jpg')">
+          <img src="photo5.jpg" alt="Couple Pre-conception Counseling" loading="lazy" onerror="handleImgError(this, ['photo5.jpeg', 'photo5.png', 'photo5.JPG'])">
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEOS SECTION (2 Videos) -->
+    <div class="section" id="videos">
+      <div class="section-header">Video Guidance (2 Videos)</div>
+      <div class="video-grid">
+        
+        <div class="video-card">
+          <video controls preload="metadata" playsinline>
+            <source src="video1.mp4" type="video/mp4">
+            <source src="video1.mov" type="video/quicktime">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-card-body">
+            <div class="video-card-title">1. Introduction to Shastrokta Garbhsanskar</div>
+            <div class="video-card-desc">Dr. Gauri explains how sensory stimulation and positive maternal mindset shape baby's development in the womb.</div>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <video controls preload="metadata" playsinline>
+            <source src="video2.mp4" type="video/mp4">
+            <source src="video2.mov" type="video/quicktime">
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-card-body">
+            <div class="video-card-title">2. Pregnancy Yoga, Pranayama & Meditation Demo</div>
+            <div class="video-card-desc">Practical demonstration of soothing breathing exercises and safe postures for expectant mothers.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ENQUIRY FORM SECTION -->
+    <div class="section" id="enquiry">
+      <div class="section-header">Join Our Class / Book Enquiry</div>
+      <form onsubmit="sendWhatsAppLead(event)" class="inquiry-form">
+        <input type="text" id="leadName" placeholder="Enter Mother's / Couple's Full Name" required>
+        <input type="tel" id="leadPhone" placeholder="Enter Mobile Number" required>
+        
+        <select id="leadProgram" style="color: #334155; font-size: 13px;" required>
+          <option value="" disabled selected>Select Program of Interest</option>
+          <option value="Suryanamaskar Program">1. Suryanamaskar Program</option>
+          <option value="Yoga & Meditation Program">2. Yoga & Meditation Program</option>
+          <option value="Weight Loss Program">3. Weight Loss Program</option>
+          <option value="Full Garbhsanskar Program">4. Garbhsanskar Program</option>
+          <option value="Weight Loss for Pregnancy">5. Weight Loss for Pregnancy</option>
+          <option value="Diet Plan Program">6. Diet Plan Program</option>
+          <option value="Post Delivery Weight Loss">7. Post Delivery Weight Loss</option>
+          <option value="Couple Pre-Pregnancy Counseling">8. Couple Journey / Conception Planning</option>
+        </select>
+
+        <textarea id="leadMessage" rows="3" placeholder="Current pregnancy month / specific goals or questions..." required></textarea>
+        
+        <button type="submit">
+          <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Book Consultation via WhatsApp
+        </button>
+      </form>
+    </div>
+
+    <!-- FEEDBACK SECTION -->
+    <div class="section" id="feedback">
+      <div class="section-header">Student Feedback</div>
+      <div class="feedback-container">
+        <div class="feedback-subtitle">Share Your Class Experience</div>
+        <form onsubmit="sendFeedback(event)" class="inquiry-form">
+          <div class="rating-wrapper">
+            <div class="stars-group" id="starsGroup">
+              <i class="fa-solid fa-star star-item" data-value="1" onclick="selectRating(1)" onmouseover="hoverRating(1)" onmouseout="resetHover()"></i>
+              <i class="fa-solid fa-star star-item" data-value="2" onclick="selectRating(2)" onmouseover="hoverRating(2)" onmouseout="resetHover()"></i>
+              <i class="fa-solid fa-star star-item" data-value="3" onclick="selectRating(3)" onmouseover="hoverRating(3)" onmouseout="resetHover()"></i>
+              <i class="fa-solid fa-star star-item" data-value="4" onclick="selectRating(4)" onmouseover="hoverRating(4)" onmouseout="resetHover()"></i>
+              <i class="fa-solid fa-star star-item" data-value="5" onclick="selectRating(5)" onmouseover="hoverRating(5)" onmouseout="resetHover()"></i>
+            </div>
+            <div class="rating-badge" id="ratingBadgeText">Select a Rating</div>
+          </div>
+
+          <input type="text" id="feedbackName" placeholder="Enter Your Name" required>
+          <textarea id="feedbackText" rows="3" placeholder="Share your experience with Dr. Gauri and the Garbhvedam sessions..." required></textarea>
+          
+          <button type="submit" class="btn-feedback-submit">Submit Feedback</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- SHARE SECTION WITH LOCAL HIGH-RES QR -->
+    <div class="section" id="share" style="border-bottom: none;">
+      <div class="section-header">Share Digital Profile</div>
+      <div class="share-box">
+        <p style="font-size: 12px; color: var(--muted); margin-bottom: 6px;">Scan to open Garbhvedam digital card:</p>
+        
+        <!-- Offline Canvas QR Container -->
+        <div id="qrcode-container"></div>
+        
+        <div style="margin: 10px 0 12px;">
+          <a href="javascript:void(0)" onclick="downloadHDQR()" style="display: inline-block; background: var(--primary); color: #fff; padding: 7px 16px; border-radius: 6px; font-size: 11.5px; font-weight: 600; text-decoration: none;">
+            <i class="fa-solid fa-download"></i> Download HD QR for Print
+          </a>
+        </div>
+
+        <div class="share-direct-wrap">
+          <label>Send card directly to any expectant mother or couple:</label>
+          <div class="share-input-group">
+            <input type="tel" id="targetPhone" placeholder="Enter 10-digit mobile number">
+            <button onclick="sendToNumber()"><i class="fa-brands fa-whatsapp"></i> Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="text-align: center; padding: 20px; font-size: 11.5px; color: #94a3b8; background: #fff1f2; border-top: 1px solid #ffe4e6;">
+      © 2026 Garbhvedam | Dr. Gauri Ramesh Hukkeri. All Rights Reserved.
+    </div>
+
+  </div>
+
+  <!-- FLOATING BOTTOM NAVIGATION -->
+  <nav class="bottom-bar">
+    <a href="#home" class="bottom-tab active">
+      <i class="fa-solid fa-house"></i>
+      <span>HOME</span>
+    </a>
+    <a href="#about" class="bottom-tab">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>ABOUT</span>
+    </a>
+    <a href="#programs" class="bottom-tab">
+      <i class="fa-solid fa-om"></i>
+      <span>PROGRAMS</span>
+    </a>
+    <a href="#gallery" class="bottom-tab">
+      <i class="fa-solid fa-images"></i>
+      <span>GALLERY</span>
+    </a>
+    <a href="#enquiry" class="bottom-tab">
+      <i class="fa-solid fa-calendar-check"></i>
+      <span>ENQUIRY</span>
+    </a>
+    <a href="#feedback" class="bottom-tab">
+      <i class="fa-solid fa-star"></i>
+      <span>FEEDBACK</span>
+    </a>
+  </nav>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" class="lightbox-content" src="" alt="Enlarged View" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    // Asset Fallback handler
+    function handleImgError(img, fallbacks) {
+      if (!img.dataset.tryIndex) {
+        img.dataset.tryIndex = "0";
+      }
+      let idx = parseInt(img.dataset.tryIndex);
+      if (idx < fallbacks.length) {
+        img.dataset.tryIndex = (idx + 1).toString();
+        img.src = fallbacks[idx];
+      } else {
+        img.onerror = null;
+      }
+    }
+
+    // Dynamic QR generation
+    document.addEventListener("DOMContentLoaded", () => {
+      const currentUrl = window.location.href;
+      const qrBox = document.getElementById("qrcode-container");
+      qrBox.innerHTML = "";
+      new QRCode(qrBox, {
+        text: currentUrl,
+        width: 140,
+        height: 140,
+        colorDark : "#4c0519",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+    });
+
+    // Lightbox Modal Controls
+    function openLightbox(imageSrc) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = imageSrc;
+      lightbox.style.display = 'flex';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // Star Rating Interaction
+    let currentRating = 0;
+    const ratingTexts = {
+      1: "1 / 5 Needs Improvement",
+      2: "2 / 5 Fair",
+      3: "3 / 5 Good Experience",
+      4: "4 / 5 Very Beneficial",
+      5: "5 / 5 Highly Inspiring & Blessed"
+    };
+
+    function selectRating(stars) {
+      currentRating = stars;
+      renderStars(stars);
+      document.getElementById('ratingBadgeText').innerText = ratingTexts[stars];
+    }
+
+    function hoverRating(stars) {
+      renderStars(stars);
+      document.getElementById('ratingBadgeText').innerText = ratingTexts[stars];
+    }
+
+    function resetHover() {
+      renderStars(currentRating);
+      if (currentRating > 0) {
+        document.getElementById('ratingBadgeText').innerText = ratingTexts[currentRating];
+      } else {
+        document.getElementById('ratingBadgeText').innerText = "Select a Rating";
+      }
+    }
+
+    function renderStars(count) {
+      const stars = document.querySelectorAll('.star-item');
+      stars.forEach(star => {
+        const val = parseInt(star.getAttribute('data-value'));
+        if (val <= count) {
+          star.classList.add('active');
+        } else {
+          star.classList.remove('active');
+        }
+      });
+    }
+
+    // Feedback WhatsApp Handler
+    function sendFeedback(event) {
+      event.preventDefault();
+      if (currentRating === 0) {
+        alert("Please select a star rating first!");
+        return;
+      }
+      const name = document.getElementById('feedbackName').value.trim();
+      const feedback = document.getElementById('feedbackText').value.trim();
+      const starsDisplay = "⭐".repeat(currentRating);
+      const targetNumber = '918600673556';
+
+      const formattedText = 
+`*Student Feedback - Garbhvedam Classes* 🌸
+-----------------------------------------
+*Rating:* ${starsDisplay} (${currentRating}/5)
+*Participant Name:* ${name}
+*Experience:* ${feedback}
+-----------------------------------------
+_Sent from Garbhvedam Digital Card_`;
+
+      window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(formattedText)}`, '_blank');
+    }
+
+    // Enquiry WhatsApp Handler
+    function sendWhatsAppLead(event) {
+      event.preventDefault();
+      const name = document.getElementById('leadName').value.trim();
+      const phone = document.getElementById('leadPhone').value.trim();
+      const program = document.getElementById('leadProgram').value;
+      const message = document.getElementById('leadMessage').value.trim();
+      const targetNumber = '918600673556';
+
+      const formattedText = 
+`*New Class Admission Inquiry - Garbhvedam* 🤰
+-----------------------------------------
+*Name:* ${name}
+*Phone:* ${phone}
+*Selected Program:* ${program}
+*Details / Notes:* ${message}
+-----------------------------------------
+_Sent from Garbhvedam Digital Card_`;
+
+      window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(formattedText)}`, '_blank');
+    }
+
+    // WhatsApp Direct Share
+    function shareOnWhatsApp() {
+      const currentUrl = window.location.href;
+      const message = `*Garbhvedam Online Garbhsanskar & Wellness Classes*\nLed by *Dr. Gauri Ramesh Hukkeri* (M.D. Balrog, Garbhsanskar & Yoga Expert).\n\nExplore courses & book live batches here:\n${currentUrl}`;
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // Share to specific number
+    function sendToNumber() {
+      let phone = document.getElementById('targetPhone').value.trim().replace(/\D/g, '');
+      if (!phone) {
+        alert('Please enter a valid mobile number');
+        return;
+      }
+      if (phone.length === 10) {
+        phone = '91' + phone;
+      }
+      const currentUrl = window.location.href;
+      const message = `Namaste! Explore the digital profile of *Garbhvedam Online Garbhsanskar Classes* by *Dr. Gauri Ramesh Hukkeri*:\n\n${currentUrl}`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+
+    // High-Resolution QR Generator (1000x1000 px) for print
+    function downloadHDQR() {
+      const currentUrl = window.location.href;
+      const tempDiv = document.createElement("div");
+      new QRCode(tempDiv, {
+        text: currentUrl,
+        width: 1000,
+        height: 1000,
+        colorDark : "#4c0519",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+
+      setTimeout(() => {
+        const canvas = tempDiv.querySelector("canvas");
+        const link = document.createElement('a');
+        link.download = 'Garbhvedam_Dr_Gauri_Hukkeri_HD_QR.png';
+        if (canvas) {
+          link.href = canvas.toDataURL("image/png");
+        } else {
+          const img = tempDiv.querySelector("img");
+          link.href = img.src;
+        }
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 100);
+    }
+
+    // Native vCard Contact File Generator
+    function downloadVCard() {
+      const vcardData = 
+`BEGIN:VCARD
+VERSION:3.0
+FN:Dr. Gauri Ramesh Hukkeri
+ORG:Garbhvedam Online Garbhsanskar Classes
+TITLE:M.D. Balrog, शास्त्रोक्त गर्भसंस्कार तज्ञ, योग उपासक
+TEL;TYPE=CELL,VOICE:+918600673556
+NOTE:Specialist in Garbhsanskar, Prenatal Yoga, Trimester Nutrition, and Weight Management
+URL:${window.location.href}
+END:VCARD`;
+
+      const blob = new Blob([vcardData], { type: 'text/vcard;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'Dr_Gauri_Hukkeri_Garbhvedam.vcf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+
+</body>
+</html>
