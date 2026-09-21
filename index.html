@@ -242,7 +242,6 @@
       text-decoration: none;
       color: var(--text);
       transition: background 0.2s;
-      margin-bottom: 10px;
       background: #fff;
     }
     .link-tile:hover {
@@ -327,16 +326,12 @@
       text-decoration: none;
     }
 
-    /* Photo Gallery Grid (5 Photos Layout) */
+    /* Photo Gallery Grid (4 Photos - Clean 2x2 Grid) */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
       margin-top: 8px;
-    }
-    .gallery-grid .gallery-item:first-child {
-      grid-column: span 2;
-      aspect-ratio: 16 / 9;
     }
     .gallery-item {
       aspect-ratio: 1 / 1;
@@ -359,7 +354,7 @@
       display: block;
     }
 
-    /* Video Showcase Grid (2 Videos) */
+    /* Video Showcase Grid (1 Video) */
     .video-grid {
       display: flex;
       flex-direction: column;
@@ -684,7 +679,7 @@
       </div>
     </div>
 
-    <!-- DIRECT LINKS SECTION -->
+    <!-- DIRECT LINKS SECTION (Brochure removed) -->
     <div class="section" id="links">
       <div class="section-header">Direct Actions & Booking</div>
       
@@ -694,17 +689,6 @@
           <div>
             <div class="link-tile-title">Book Free Introductory Call</div>
             <div class="link-tile-desc">Discuss batch timings & course modules</div>
-          </div>
-        </div>
-        <i class="fa-solid fa-chevron-right" style="color:var(--primary); font-size: 13px;"></i>
-      </a>
-
-      <a href="https://wa.me/918600673556?text=Namaste,%20please%20send%20the%20complete%20Garbhvedam%20Course%20PDF%20Syllabus%20and%20Schedule." target="_blank" class="link-tile">
-        <div class="link-tile-left">
-          <i class="fa-solid fa-file-pdf" style="color: var(--primary);"></i>
-          <div>
-            <div class="link-tile-title">Get Program Brochure on WhatsApp</div>
-            <div class="link-tile-desc">Course syllabus, diet guides & details</div>
           </div>
         </div>
         <i class="fa-solid fa-chevron-right" style="color:var(--primary); font-size: 13px;"></i>
@@ -834,9 +818,9 @@
 
     </div>
 
-    <!-- PHOTOS GALLERY SECTION (5 Photos) -->
+    <!-- PHOTOS GALLERY SECTION (4 Photos - Clean 2x2 Grid) -->
     <div class="section" id="gallery">
-      <div class="section-header">Class & Activity Gallery (5 Photos)</div>
+      <div class="section-header">Class & Activity Gallery (4 Photos)</div>
       <div class="gallery-grid">
         <div class="gallery-item" onclick="openLightbox('photo1.jpg')">
           <img src="photo1.jpg" alt="Online Garbhsanskar Live Session" loading="lazy" onerror="handleImgError(this, ['photo1.jpeg', 'photo1.png', 'photo1.JPG'])">
@@ -850,17 +834,13 @@
         <div class="gallery-item" onclick="openLightbox('photo4.jpg')">
           <img src="photo4.jpg" alt="Diet Plan & Ayurvedic Nutrition" loading="lazy" onerror="handleImgError(this, ['photo4.jpeg', 'photo4.png', 'photo4.JPG'])">
         </div>
-        <div class="gallery-item" onclick="openLightbox('photo5.jpg')">
-          <img src="photo5.jpg" alt="Couple Pre-conception Counseling" loading="lazy" onerror="handleImgError(this, ['photo5.jpeg', 'photo5.png', 'photo5.JPG'])">
-        </div>
       </div>
     </div>
 
-    <!-- VIDEOS SECTION (2 Videos) -->
+    <!-- VIDEOS SECTION (1 Video) -->
     <div class="section" id="videos">
-      <div class="section-header">Video Guidance (2 Videos)</div>
+      <div class="section-header">Video Guidance (1 Video)</div>
       <div class="video-grid">
-        
         <div class="video-card">
           <video controls preload="metadata" playsinline>
             <source src="video1.mp4" type="video/mp4">
@@ -869,22 +849,9 @@
           </video>
           <div class="video-card-body">
             <div class="video-card-title">1. Introduction to Shastrokta Garbhsanskar</div>
-            <div class="video-card-desc">Dr. Gauri explains how sensory stimulation and positive maternal mindset shape baby's development in the womb.</div>
+            <div class="video-card-desc">Dr. Gauri explains how sensory stimulation, nutrition, and positive maternal mindset shape baby's development in the womb.</div>
           </div>
         </div>
-
-        <div class="video-card">
-          <video controls preload="metadata" playsinline>
-            <source src="video2.mp4" type="video/mp4">
-            <source src="video2.mov" type="video/quicktime">
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-card-body">
-            <div class="video-card-title">2. Pregnancy Yoga, Pranayama & Meditation Demo</div>
-            <div class="video-card-desc">Practical demonstration of soothing breathing exercises and safe postures for expectant mothers.</div>
-          </div>
-        </div>
-
       </div>
     </div>
 
